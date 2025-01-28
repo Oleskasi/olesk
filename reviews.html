@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            
+
+        }
+        .header {
+            right: 0;
+            position: sticky;
+            top: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end; 
+            padding: 10px 20px;
+            z-index: 9999;
+        }
+        
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease; 
+            z-index: 9000;
+        }
+        
+        .line {
+            width: 25px;
+            height: 3px;
+            background-color: rgb(193, 0, 132);
+            margin: 4px 0;
+            transition: all 0.3s ease; 
+        }
+        
+        .nav-links {
+            display: none; 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); 
+            z-index: 1000; 
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+        }
+        
+        .nav-links.active {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            opacity: 1; 
+        }
+        
+        .nav-links ul {
+            
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .nav-links ul li {
+            padding: 20px 0;
+        }
+        
+        .nav-links ul li a {
+            
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 24px;
+            opacity: 0.5;
+        }
+        
+        /*крест менюхи*/
+        .hamburger.active .line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg); 
+        }
+        
+        .hamburger.active .line:nth-child(2) {
+            opacity: 0; 
+        }
+        
+        .hamburger.active .line:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg); 
+        }
+        
+        
+        .hamburger:hover{
+            scale: 1.1;
+        }
+        
+        .nav-links ul li a:hover {
+            color: #f555e2;
+            font-size: 26px;
+        }
+    
+    
+    
+    
+    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: rgb(197, 168, 168);
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            resize: vertical;
+        }
+    
+        form{
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            padding: auto;
+            background-color: rgb(13, 37, 58);
+        }
+
+        h1{
+            text-align: center;
+        }
+        textarea{
+            background-color: #b8b6b6;
+        }
+    
+        button{
+          
+            background-color: #b8b6b6;
+            color: #8a027a;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div id="hamburger" class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <nav id="nav-links" class="nav-links">
+        <ul>
+            <li><a href="index.html">главная</a></li>
+            <li><a href="portfolio.html">Портфолио</a></li>
+            <li><a href="index2.html">Частые вопросы</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+        </ul>
+        </ul>
+    </nav>
+
+    <h1>Опросник</h1>
+    
+    <form action="/submit_survey" method="post">
+        <!-- Раздел с ФИО -->
+        <fieldset>
+            <legend>ФИО</legend>
+            <div class="form-group">
+                <label for="first_name">Имя:</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Фамилия:</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+            <div class="form-group">
+                <label for="middle_name">Отчество:</label>
+                <input type="text" id="middle_name" name="middle_name">
+            </div>
+        </fieldset>
+
+        <!-- Раздел с электронной почтой -->
+        <fieldset>
+            <legend>Электронная почта</legend>
+            <div class="form-group">
+                <label for="email">Электронная почта:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </fieldset>
+
+        <!-- Раздел с мнением о сайте -->
+        <fieldset>
+            <legend>Мнение о сайте</legend>
+            <div class="form-group">
+                <label for="site_opinion">Ваше мнение о сайте:</label>
+                <select id="site_opinion" name="site_opinion">
+                    <option value="excellent">Отлично</option>
+                    <option value="good">Хорошо</option>
+                    <option value="satisfactory">Удовлетворительно</option>
+                    <option value="poor">Плохо</option>
+                    <option value="very_poor">Очень плохо</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="style_opinion">Ваше мнение о стиле сайта:</label>
+                <select id="style_opinion" name="style_opinion">
+                    <option value="excellent">Отличный</option>
+                    <option value="good">Хороший</option>
+                    <option value="satisfactory">Удовлетворительный</option>
+                    <option value="poor">Плохой</option>
+                    <option value="very_poor">Очень плохой</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="usability_opinion">Ваше мнение о работоспособности сайта:</label>
+                <select id="usability_opinion" name="usability_opinion">
+                    <option value="excellent">Отличная</option>
+                    <option value="good">Хорошая</option>
+                    <option value="satisfactory">Удовлетворительная</option>
+                    <option value="poor">Плохая</option>
+                    <option value="very_poor">Очень плохая</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="developer_opinion">Впечатление об разработчике:</label>
+                <select id="developer_opinion" name="developer_opinion">
+                    <option value="excellent">Отличный</option>
+                    <option value="good">Хороший</option>
+                    <option value="satisfactory">Удовлетворительный</option>
+                    <option value="poor">Плохой</option>
+                    <option value="very_poor">Очень плохой</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="overall_impression">Общее впечатление:</label>
+                <select id="overall_impression" name="overall_impression">
+                    <option value="excellent">Отличное</option>
+                    <option value="good">Хорошее</option>
+                    <option value="satisfactory">Удовлетворительное</option>
+                    <option value="poor">Плохое</option>
+                    <option value="very_poor">Очень плохое</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="wishes">Пожелания:</label>
+                <textarea id="wishes" name="wishes" placeholder="Введите ваши пожелания..."></textarea>
+            </div>
+        </fieldset>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+
+
+<script src="script.js"></script>
+</body> 
+</html>
